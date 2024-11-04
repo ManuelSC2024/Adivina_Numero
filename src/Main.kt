@@ -28,7 +28,7 @@ fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
     val numerosGenerados = mutableSetOf<Int>()
 
     while (numerosGenerados.size < cifras) {
-        // Cambiamos el rango a 0-10 (incluye 0 y excluye el 10)
+        // Rango de 0-10 (incluye 0 y excluye el 10)
         val ramdonNumber = Random.nextInt(numeroInicio, numeroFinal)
 
         // Agregamos el número al Set; si ya existe, no lo añade
@@ -47,7 +47,7 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
 
     for (i in intentos downTo 1) {
         println("Te quedan $i intentos")
-        print("escribe un numero:")
+        print("escribe un número de $cifras cifras sin números repetidos::")
         val numeroEscrito = readln()
         val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))
 
@@ -90,7 +90,7 @@ fun main() {
 
     //println("${GREEN}")
 
-    println(numeroAleatorio)
+    println("$numeroAleatorio Borrar en la version final")
 
     println("1. Jugar")
     println("2. Intento anterior")

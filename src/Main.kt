@@ -1,14 +1,16 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import kotlin.random.Random
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+fun ramdom(cifras:Int):Int{
+    val numeroAleatorio = (0 until cifras)
+        .map { Random.nextInt(0, 10) }  // Genera números aleatorios entre 0 y 9
+        .joinToString("")                 // Une los números en un string
+        .toInt()
+    return numeroAleatorio
+}
+
+fun main() {
+    val cifras = 4
+    val numeroAleatorio = ramdom(cifras)
+
+
 }

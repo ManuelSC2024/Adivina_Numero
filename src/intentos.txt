@@ -1,0 +1,1 @@
+Numero secreto:7854Intento 4:0, Correcto:1, Correcto en posición incorrecta:0Intento 3:0, Correcto:2, Correcto en posición incorrecta:0Intento 2:0, Correcto:3, Correcto en posición incorrecta:0Intento 1:0, Correcto:1, Correcto en posición incorrecta:0

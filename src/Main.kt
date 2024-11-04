@@ -40,7 +40,7 @@ fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
     return numeroAleatorio
 }
 
-fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, numeroFinal: Int) {
+fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, numeroFinal: Int):String {
     println()
     println("El juego consisten en adivinar un número de $cifras cifras cada cifra puede contener un numero del $numeroInicio al ${numeroFinal-1} y tendras $intentos intentos.")
     println()
@@ -49,14 +49,18 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
         println("Te quedan $i intentos")
         print("escribe un numero:")
         val numeroEscrito = readln()
+        val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))
+
+        if (resultado.contains(numeroAleatorio)){
+            return "$resultado con ${i-1} intentos sobrantes"
+        }
+        println(resultado)
         println()
-
-        println(resultado(numeroAleatorio,numeroEscrito, cifras))
-
     }
+    return "Perdiste el numero aleatorio es $numeroAleatorio"
 }
 
-fun resultado(numeroAleatorio: String, numeroEscrito:String, cifras:Int):String{
+fun resultadoJuego(numeroAleatorio: String, numeroEscrito:String, cifras:Int):String{
     var contadorAciertos = 0
     var contadorContiene = 0
 
@@ -86,12 +90,14 @@ fun main() {
 
     //println("${GREEN}")
 
+    println(numeroAleatorio)
+
     println("1. Jugar")
     println("2. Intento anterior")
     println("3. Salir")
     val selector = readln().toInt()
     when (selector) {
-        1 -> juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal)
+        1 -> println(juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal))
         2 -> exitProcess(0) // Finaliza el programa
         3 -> exitProcess(0) // Finaliza el programa
     }

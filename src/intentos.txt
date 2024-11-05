@@ -1,1 +1,5 @@
-Numero secreto:7854Intento 4:0, Correcto:1, Correcto en posición incorrecta:0Intento 3:0, Correcto:2, Correcto en posición incorrecta:0Intento 2:0, Correcto:3, Correcto en posición incorrecta:0Intento 1:0, Correcto:1, Correcto en posición incorrecta:0
+Numero secreto:5139
+Intento 4:0245, Correcto:0, Correcto en posición incorrecta:1
+Intento 3:0698, Correcto:0, Correcto en posición incorrecta:1
+Intento 2:0754, Correcto:0, Correcto en posición incorrecta:1
+Intento 1:0952, Correcto:0, Correcto en posición incorrecta:2

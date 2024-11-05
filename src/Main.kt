@@ -57,10 +57,10 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
             return "$resultado con ${i-1} intentos sobrantes"
         }
         println(resultado)
-        File("src/intentos.txt").appendText("Intento $i:$numeroInicio, $resultado")
+        File("src/intentos.txt").appendText(System.lineSeparator() +"Intento $i:$numeroEscrito, $resultado")
         println()
     }
-    return "Perdiste el numero aleatorio es $numeroAleatorio"
+    return "Perdiste, el numero aleatorio es $numeroAleatorio"
 }
 
 fun resultadoJuego(numeroAleatorio: String, numeroEscrito:String, cifras:Int):String{
@@ -91,9 +91,7 @@ fun main() {
     val intentos = 4
 
     //println("${GREEN}")
-
     /*println("$numeroAleatorio Borrar en la version final")*/
-
     println("1. Jugar")
     println("2. Intento anterior")
     println("3. Salir")
@@ -102,6 +100,8 @@ fun main() {
         1 ->{
             val numeroAleatorio = random(cifras, numeroInicio, numeroFinal)
             println(juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal))
+            println()
+            main()
         }
         2 -> {
             println()

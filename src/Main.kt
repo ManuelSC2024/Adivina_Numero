@@ -2,6 +2,10 @@ import java.io.File
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
+const val GREEN = "\u001B[32m"
+const val WHITE = "\u001B[37m"
+const val YELLOW = "\u001B[33m"
+
 /* Códigos de color de fondo
 const val BG_BLACK = "\u001B[40m"
 const val BG_RED = "\u001B[41m"
@@ -15,8 +19,6 @@ const val BG_WHITE = "\u001B[47m"
 const val RESET = "\u001B[0m"
 const val BLACK = "\u001B[30m"
 const val RED = "\u001B[31m"
-const val GREEN = "\u001B[32m"
-const val YELLOW = "\u001B[33m"
 const val BLUE = "\u001B[34m"
 const val PURPLE = "\u001B[35m"
 const val CYAN = "\u001B[36m"
@@ -54,7 +56,7 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
         val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))
 
         if (resultado.contains(numeroAleatorio)){
-            return "$resultado con ${i-1} intentos sobrantes"
+            return "$resultado con ${GREEN}${i-1} ${WHITE}intentos sobrantes"
         }
         println(resultado)
         File("src/intentos.txt").appendText(System.lineSeparator() +"Intento $i:$numeroEscrito, $resultado")
@@ -78,9 +80,9 @@ fun resultadoJuego(numeroAleatorio: String, numeroEscrito:String, cifras:Int):St
         }
     }
     return if (contadorAciertos == cifras){
-        "Correcto el numero aleatorio es $numeroAleatorio"
+        "Correcto el numero aleatorio es ${GREEN}$numeroAleatorio${WHITE}"
     } else {
-        "Correcto:$contadorAciertos, Correcto en posición incorrecta:$contadorContiene"
+        "Correcto:${GREEN}$contadorAciertos, ${WHITE}Correcto en posición incorrecta:${YELLOW}$contadorContiene${WHITE}"
     }
 }
 
@@ -90,15 +92,14 @@ fun main() {
     val numeroFinal = 10
     val intentos = 4
 
-    //println("${GREEN}")
-    /*println("$numeroAleatorio Borrar en la version final")*/
-    println("1. Jugar")
+    println("${WHITE}1. Jugar")
     println("2. Intento anterior")
     println("3. Salir")
     val selector = readln().toInt()
     when (selector) {
         1 ->{
             val numeroAleatorio = random(cifras, numeroInicio, numeroFinal)
+            //println("$numeroAleatorio Borrar en la version final")
             println(juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal))
             println()
             main()

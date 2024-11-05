@@ -1,5 +1,1 @@
-Numero secreto:5139
-Intento 4:0245, Correcto:0, Correcto en posición incorrecta:1
-Intento 3:0698, Correcto:0, Correcto en posición incorrecta:1
-Intento 2:0754, Correcto:0, Correcto en posición incorrecta:1
-Intento 1:0952, Correcto:0, Correcto en posición incorrecta:2
+Numero secreto:4803

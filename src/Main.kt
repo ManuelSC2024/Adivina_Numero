@@ -1,30 +1,12 @@
 import java.io.File
 import kotlin.random.Random
 import kotlin.system.exitProcess
-
-const val GREEN = "\u001B[32m"
 const val WHITE = "\u001B[37m"
-const val YELLOW = "\u001B[33m"
-
-/* Códigos de color de fondo
-const val BG_BLACK = "\u001B[40m"
-const val BG_RED = "\u001B[41m"
-const val BG_GREEN = "\u001B[42m"
-const val BG_YELLOW = "\u001B[43m"
-const val BG_BLUE = "\u001B[44m"
-const val BG_PURPLE = "\u001B[45m"
-const val BG_CYAN = "\u001B[46m"
-const val BG_WHITE = "\u001B[47m"
-// Colores ANSI básicos
-const val RESET = "\u001B[0m"
 const val BLACK = "\u001B[30m"
-const val RED = "\u001B[31m"
-const val BLUE = "\u001B[34m"
-const val PURPLE = "\u001B[35m"
-const val CYAN = "\u001B[36m"
-const val WHITE = "\u001B[37m"
-const val BOLD = "\u001B[1m"
-const val UNDERLINE = "\u001B[4m"*/
+const val GREEN = "\u001B[32m"
+const val YELLOW = "\u001B[33m"
+const val BG_RED = "\u001B[41m"
+const val RESET = "\u001B[0m"
 
 fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
     // Usamos un Set para asegurarnos de que no haya números repetidos
@@ -40,7 +22,7 @@ fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
 
     // Convertimos el Set a una lista, la unimos y la convertimos a Int
     val numeroAleatorio = numerosGenerados.joinToString("")
-    File("src/intentos.txt").writeText("Numero secreto:$numeroAleatorio")
+    File("./intentos.txt").writeText("Numero secreto:$numeroAleatorio")
     return numeroAleatorio
 }
 
@@ -52,14 +34,18 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
     for (i in intentos downTo 1) {
         println("Te quedan $i intentos")
         print("escribe un número de $cifras cifras sin números repetidos:")
-        val numeroEscrito = readln()
+        var numeroEscrito = readln()
+        while (numeroEscrito.length != cifras){
+            print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número con mas de $cifras cifras vuelva a introducir el numero:")
+            numeroEscrito = readln()
+        }
         val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))
 
         if (resultado.contains(numeroAleatorio)){
             return "$resultado con ${GREEN}${i-1} ${WHITE}intentos sobrantes"
         }
         println(resultado)
-        File("src/intentos.txt").appendText(System.lineSeparator() +"Intento $i:$numeroEscrito, $resultado")
+        File("./intentos.txt").appendText(System.lineSeparator() +"Intento $i:$numeroEscrito, $resultado")
         println()
     }
     return "Perdiste, el numero aleatorio es $numeroAleatorio"
@@ -91,6 +77,10 @@ fun main() {
     val numeroInicio = 0
     val numeroFinal = 10
     val intentos = 4
+    val file = File("./intentos.txt")
+    if (!file.exists()) {
+        file.createNewFile()  // Crea el archivo si no existe
+    }
 
     println("${WHITE}1. Jugar")
     println("2. Intento anterior")
@@ -106,7 +96,7 @@ fun main() {
         }
         2 -> {
             println()
-            val leer = File("src/intentos.txt").readText()
+            val leer = File("./intentos.txt").readText()
             println(leer)
             println()
             main()

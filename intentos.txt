@@ -1,1 +1,5 @@
-Numero secreto:4659
+Numero secreto:3201
+Intento 4:1111, Correcto:[32m1, [37mCorrecto en posición incorrecta:[33m3[37m
+Intento 3:1111, Correcto:[32m1, [37mCorrecto en posición incorrecta:[33m3[37m
+Intento 2:1111, Correcto:[32m1, [37mCorrecto en posición incorrecta:[33m3[37m
+Intento 1:1111, Correcto:[32m1, [37mCorrecto en posición incorrecta:[33m3[37m

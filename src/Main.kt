@@ -33,12 +33,21 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
 
     for (i in intentos downTo 1) {
         println("Te quedan $i intentos")
-        print("escribe un número de $cifras cifras sin números repetidos:")
+        print("Escribe un número de $cifras cifras sin números repetidos:")
         var numeroEscrito = readln()
         while (numeroEscrito.length != cifras){
-            print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número con mas de $cifras cifras vuelva a introducir el numero:")
+            print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número con mas o menos de $cifras cifras vuelva a introducir el numero:")
             numeroEscrito = readln()
         }
+
+        for (n in 0 until cifras) {
+            val cifra = numeroEscrito[n].digitToInt() // Convertir el carácter a un entero
+            if (cifra < numeroInicio || cifra >= numeroFinal) {
+                print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número cuyas cifras no están en el rango $numeroInicio - $numeroFinal. Vuelve a introducir el número:")
+                numeroEscrito = readln()
+            }
+        }
+
         val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))
 
         if (resultado.contains(numeroAleatorio)){
@@ -78,8 +87,8 @@ fun main() {
     val numeroFinal = 10
     val intentos = 4
     val file = File("./intentos.txt")
-    if (!file.exists()) {
-        file.createNewFile()  // Crea el archivo si no existe
+    if (!file.exists()) { // Crea el archivo si no existe
+        file.createNewFile()
     }
 
     println("${WHITE}1. Jugar")
@@ -87,20 +96,23 @@ fun main() {
     println("3. Salir")
     val selector = readln().toInt()
     when (selector) {
-        1 ->{
+        1 ->{ // Empieza el juego
             val numeroAleatorio = random(cifras, numeroInicio, numeroFinal)
-            //println("$numeroAleatorio Borrar en la version final")
+            println("$numeroAleatorio Borrar en la version final")
             println(juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal))
             println()
             main()
         }
-        2 -> {
+        2 -> { // Lee el fichero
             println()
             val leer = File("./intentos.txt").readText()
             println(leer)
             println()
             main()
         }
-        3 -> exitProcess(0) // Finaliza el programa
+        3 ->{ // Finaliza el programa
+            println("Gracias por jugar")
+            exitProcess(0) // En ese caso no es necesario pero lo dejo para referencias futuras
+        }
     }
 }

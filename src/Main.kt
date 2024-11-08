@@ -34,18 +34,13 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
     for (i in intentos downTo 1) {
         println("Te quedan $i intentos")
         print("Escribe un número de $cifras cifras sin números repetidos:")
+        //Aqui
         var numeroEscrito = readln()
-        while (numeroEscrito.length != cifras){
-            print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número con mas o menos de $cifras cifras vuelva a introducir el numero:")
-            numeroEscrito = readln()
-        }
 
-        for (n in 0 until cifras) {
-            val cifra = numeroEscrito[n].digitToInt() // Convertir el carácter a un entero
-            if (cifra < numeroInicio || cifra >= numeroFinal) {
-                print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número cuyas cifras no están en el rango $numeroInicio - $numeroFinal. Vuelve a introducir el número:")
-                numeroEscrito = readln()
-            }
+        // Validación para asegurarse de que el número tiene la cantidad de cifras correcta y cada cifra está dentro del rango
+        while (numeroEscrito.length != cifras || numeroEscrito.any { it.digitToInt() !in numeroInicio until numeroFinal }) {
+            print("${BG_RED}${BLACK}ERROR${RESET} ${WHITE}escribiste un número con más o menos de $cifras cifras o con dígitos fuera del rango $numeroInicio - ${numeroFinal-1}. Vuelve a introducir el número: ")
+            numeroEscrito = readln()
         }
 
         val resultado =(resultadoJuego(numeroAleatorio,numeroEscrito, cifras))

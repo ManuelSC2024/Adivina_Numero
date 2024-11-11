@@ -1,0 +1,5 @@
+Numero secreto: 0368
+Intento 4: 1597 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m0[37m
+Intento 3: 9875 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m1[37m
+Intento 2: 6524 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m1[37m
+Intento 1: 9804 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m2[37m

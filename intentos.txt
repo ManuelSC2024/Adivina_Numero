@@ -1,0 +1,5 @@
+Numero secreto: 7139
+Intento 4: 5894 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m1[37m
+Intento 3: 1369 | Correcto: [32m1 [37m| Correcto en posición incorrecta: [33m2[37m
+Intento 2: 7561 | Correcto: [32m1 [37m| Correcto en posición incorrecta: [33m1[37m
+Intento 1: 3567 | Correcto: [32m0 [37m| Correcto en posición incorrecta: [33m2[37m

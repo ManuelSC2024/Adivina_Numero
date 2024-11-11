@@ -13,7 +13,7 @@ fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
     val numerosGenerados = mutableSetOf<Int>()
 
     while (numerosGenerados.size < cifras) {
-        // Rango de 0-10 (incluye 0 y excluye el 10)
+        // Rango de 0-9 (incluye 0 y excluye el 10)
         val ramdonNumber = Random.nextInt(numeroInicio, numeroFinal)
 
         // Agregamos el número al Set; si ya existe, no lo añade
@@ -22,7 +22,7 @@ fun random(cifras:Int, numeroInicio:Int, numeroFinal:Int):String{
 
     // Convertimos el Set a una lista, la unimos y la convertimos a Int
     val numeroAleatorio = numerosGenerados.joinToString("")
-    File("./intentos.txt").writeText("Numero secreto:$numeroAleatorio")
+    File("./intentos.txt").writeText("Numero secreto: $numeroAleatorio")
     return numeroAleatorio
 }
 
@@ -34,7 +34,6 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
     for (i in intentos downTo 1) {
         println("Te quedan $i intentos")
         print("Escribe un número de $cifras cifras sin números repetidos:")
-        //Aqui
         var numeroEscrito = readln()
 
         // Validación para asegurarse de que el número tiene la cantidad de cifras correcta y cada cifra está dentro del rango
@@ -49,7 +48,7 @@ fun juego(numeroAleatorio:String, intentos:Int, cifras:Int, numeroInicio: Int, n
             return "$resultado con ${GREEN}${i-1} ${WHITE}intentos sobrantes"
         }
         println(resultado)
-        File("./intentos.txt").appendText(System.lineSeparator() +"Intento $i:$numeroEscrito, $resultado")
+        File("./intentos.txt").appendText(System.lineSeparator() +"Intento $i: $numeroEscrito | $resultado")
         println()
     }
     return "Perdiste, el numero aleatorio es $numeroAleatorio"
@@ -72,7 +71,7 @@ fun resultadoJuego(numeroAleatorio: String, numeroEscrito:String, cifras:Int):St
     return if (contadorAciertos == cifras){
         "Correcto el numero aleatorio es ${GREEN}$numeroAleatorio${WHITE}"
     } else {
-        "Correcto:${GREEN}$contadorAciertos, ${WHITE}Correcto en posición incorrecta:${YELLOW}$contadorContiene${WHITE}"
+        "Correcto: ${GREEN}$contadorAciertos ${WHITE}| Correcto en posición incorrecta: ${YELLOW}$contadorContiene${WHITE}"
     }
 }
 
@@ -93,7 +92,7 @@ fun main() {
     when (selector) {
         1 ->{ // Empieza el juego
             val numeroAleatorio = random(cifras, numeroInicio, numeroFinal)
-            println("$numeroAleatorio Borrar en la version final")
+            // println("$numeroAleatorio Borrar en la version final")
             println(juego(numeroAleatorio, intentos, cifras, numeroInicio, numeroFinal))
             println()
             main()
